@@ -18,22 +18,27 @@ class ClientPhysique extends Controller {
          
         helper(['form', 'url']);
         $this->clientPhysiqueModel = new ClientPhysiqueModel();
-        $data['clients'] = $this->clientPhysiqueModel->get_all_clientPhysique();
+        $data['clients'] = $this->clientPhysiqueModel->get_all();
         return view('clientPhysique/liste', $data);
     }
 
-    public function clientPhysique_add() {
+    public function add() {
  
         helper(['form', 'url']);
         $this->clientPhysiqueModel = new ClientPhysiqueModel();
  
         $data = array(
-            'book_isbn' => $this->request->getPost('book_isbn'),
-            'book_title' => $this->request->getPost('book_title'),
-            'book_author' => $this->request->getPost('book_author'),
-            'book_category' => $this->request->getPost('book_category'),
+            'nom' => $this->request->getPost('nom'),
+            'prenom' => $this->request->getPost('prenom'),
+            'email' => $this->request->getPost('email'),
+            'tel' => $this->request->getPost('tel'),
+            'adresse' => $this->request->getPost('adresse'),
+            'identifiant' => $this->request->getPost('identifiant'),
+            'profession' => $this->request->getPost('profession'),
+            'salaire' => $this->request->getPost('salaire'),
+            'info_employeur' => $this->request->getPost('info_employeur'),
         );
-        $insert = $this->clientPhysiqueModel->clientPhysique_add($data);
+        $insert = $this->clientPhysiqueModel->add($data);
         echo json_encode(array("status" => TRUE));
     }
  
@@ -46,22 +51,27 @@ class ClientPhysique extends Controller {
         echo json_encode($data);
     }
  
-    public function clientPhysique_update() {
+    public function update() {
  
         helper(['form', 'url']);
         $this->clientPhysiqueModel = new ClientPhysiqueModel();
  
         $data = array(
-            'book_isbn' => $this->request->getPost('book_isbn'),
-            'book_title' => $this->request->getPost('book_title'),
-            'book_author' => $this->request->getPost('book_author'),
-            'book_category' => $this->request->getPost('book_category'),
+            'nom' => $this->request->getPost('nom'),
+            'prenom' => $this->request->getPost('prenom'),
+            'email' => $this->request->getPost('email'),
+            'tel' => $this->request->getPost('tel'),
+            'adresse' => $this->request->getPost('adresse'),
+            'identifiant' => $this->request->getPost('identifiant'),
+            'profession' => $this->request->getPost('profession'),
+            'salaire' => $this->request->getPost('salaire'),
+            'info_employeur' => $this->request->getPost('info_employeur'),
         );
         $this->clientPhysiqueModel->clientPhysique_update(array('book_id' => $this->request->getPost('id')), $data);
         echo json_encode(array("status" => TRUE));
     }
  
-    public function clientPhysique_delete($id) {
+    public function delete($id) {
  
         helper(['form', 'url']);
         $this->clientPhysiqueModel = new clientPhysiqueModel();

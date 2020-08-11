@@ -18,22 +18,62 @@ class Compte extends Controller {
          
         helper(['form', 'url']);
         $this->CompteModel = new CompteModel();
-        $data['comptes'] = $this->CompteModel->get_all_compte();
-        return view('compte_view', $data);
+        $data['comptes'] = $this->CompteModel->get_all();
+        return view('compte/liste', $data);
     }
 
-    public function compte_add() {
+    public function add() {
  
         helper(['form', 'url']);
         $this->CompteModel = new CompteModel();
+
+        if ($_POST['typeCompte']==1) {
+            
+            $data = array(
+                'numCompte' => $this->request->getPost('numeroCompte'),
+                'fraisOuv' => $this->request->getPost('fraisOuverture'),
+                'typeCompte' => ('Courant'),
+                'remuneration' => $this->request->getPost('remuneration'),
+                'solde' => $this->request->getPost('depotInitial'),
+                'agios' => $this->request->getPost('agios'),
+                'dateOuverture' => $this->request->getPost('dateOuverture'),
+                'dateDeblocage' => $this->request->getPost('dateDeblocage'),
+                //'idClientEntreprise' => $this->request->getPost('searchEntreprise'),
+                //'idClientPhysique' => $this->request->getPost('searchPhysique'),
+            );
+        } 
+        else if ($_POST['typeCompte']==2) {
+           
+            $data = array(
+                'numCompte' => $this->request->getPost('numeroCompte'),
+                'fraisOuv' => $this->request->getPost('fraisOuverture'),
+                'typeCompte' => ('Epargne'),
+                'remuneration' => $this->request->getPost('remuneration'),
+                'solde' => $this->request->getPost('depotInitial'),
+                'agios' => $this->request->getPost('agios'),
+                'dateOuverture' => $this->request->getPost('dateOuverture'),
+                'dateDeblocage' => $this->request->getPost('dateDeblocage'),
+                //'idClientEntreprise' => $this->request->getPost('searchEntreprise'),
+                //'idClientPhysique' => $this->request->getPost('searchPhysique'),
+            );
+        } 
+        else if ($_POST['typeCompte']==3) {
+            
+            $data = array(
+                'numCompte' => $this->request->getPost('numeroCompte'),
+                'fraisOuv' => $this->request->getPost('fraisOuverture'),
+                'typeCompte' => ('Bloque'),                'remuneration' => $this->request->getPost('remuneration'),
+                'solde' => $this->request->getPost('depotInitial'),
+                'agios' => $this->request->getPost('agios'),
+                'dateOuverture' => $this->request->getPost('dateOuverture'),
+                'dateDeblocage' => $this->request->getPost('dateDeblocage'),
+                //'idClientEntreprise' => $this->request->getPost('searchEntreprise'),
+                //'idClientPhysique' => $this->request->getPost('searchPhysique'),
+            );
+        }
  
-        $data = array(
-            'book_isbn' => $this->request->getPost('book_isbn'),
-            'book_title' => $this->request->getPost('book_title'),
-            'book_author' => $this->request->getPost('book_author'),
-            'book_category' => $this->request->getPost('book_category'),
-        );
-        $insert = $this->CompteModel->compte_add($data);
+        
+        $insert = $this->CompteModel->add($data);
         echo json_encode(array("status" => TRUE));
     }
  
@@ -46,22 +86,27 @@ class Compte extends Controller {
         echo json_encode($data);
     }
  
-    public function compte_update() {
+    public function update() {
  
         helper(['form', 'url']);
         $this->CompteModel = new CompteModel();
  
         $data = array(
-            'book_isbn' => $this->request->getPost('book_isbn'),
-            'book_title' => $this->request->getPost('book_title'),
-            'book_author' => $this->request->getPost('book_author'),
-            'book_category' => $this->request->getPost('book_category'),
+            'numcompte' => $this->request->getPost('numerocompte'),
+            'fraisOuv' => $this->request->getPost('fraisOuverture'),
+            'remuneration' => $this->request->getPost('remuneration'),
+            'solde' => $this->request->getPost('depotInitial'),
+            'agios' => $this->request->getPost('agios'),
+            'dateOuverture' => $this->request->getPost('dateOuverture'),
+            'dateDeblocage' => $this->request->getPost('dateDeblocage'),
+            'searchEntreprise' => $this->request->getPost('searchEntreprise'),
+            'searchPhysique' => $this->request->getPost('searchPhysique'),
         );
         $this->CompteModel->compte_update(array('book_id' => $this->request->getPost('book_id')), $data);
         echo json_encode(array("status" => TRUE));
     }
  
-    public function compte_delete($id) {
+    public function delete($id) {
  
         helper(['form', 'url']);
         $this->CompteModel = new CompteModel();

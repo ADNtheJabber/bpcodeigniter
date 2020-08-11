@@ -8,7 +8,7 @@
 							<h3 class="panel-title" style="text-transform: uppercase;"><i class="fa fa-money"></i>  Formulaire de creation de Compte</h3>
 							</div>
 						<div class="panel-body">panel body</div>
-							<form method="POST" action="<?php echo base_url('Compte/compte_add');?>" id="formCompte">
+							<form method="POST" action="<?php echo base_url('Compte/add');?>" id="formCompte">
 								
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">

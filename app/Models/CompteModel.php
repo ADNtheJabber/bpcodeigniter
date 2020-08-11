@@ -14,7 +14,7 @@ class CompteModel extends Model {
         $builder = $db->table('compte');
     }
  
-    public function get_all_compte() {
+    public function get_all() {
 //       $query = $this->db->table('compte');
        $query = $this->db->query('select * from compte');
 //      print_r($query->getResult());
@@ -29,7 +29,7 @@ class CompteModel extends Model {
       return $query->getRow();
     }
  
-    public function compte_add($data) {
+    public function add($data) {
          
         $query = $this->db->table($this->table)->insert($data);
         

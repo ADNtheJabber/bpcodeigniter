@@ -36,7 +36,7 @@ class ClientMoralModel extends Model {
         return $this->db->insert();
     }
  
-    public function clientmoral_update($where, $data) {
+    public function clientMoral_update($where, $data) {
         $this->db->table($this->table)->update($data, $where);
 //        print_r($this->db->getLastQuery());
         return $this->db->affectedRows();
