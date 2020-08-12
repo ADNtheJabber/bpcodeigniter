@@ -36,12 +36,7 @@ class CompteModel extends Model {
         return $this->db->insertID();
     }
  
-    public function compte_update($where, $data) {
-        $this->db->table($this->table)->update($data, $where);
-//        print_r($this->db->getLastQuery());
-        return $this->db->affectedRows();
-    }
- 
+    
     public function delete_by_id($id) {
         $this->db->table($this->table)->delete(array('id' => $id)); 
     }

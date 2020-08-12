@@ -38,8 +38,12 @@ class ClientPhysique extends Controller {
             'salaire' => $this->request->getPost('salaire'),
             'infosEmp' => $this->request->getPost('info_employeur'),
         );
-        $insert = $this->clientPhysiqueModel->add($data);
-        return view('clientPhysique/ajout', $insert);
+        $insert['inserts'] = $this->clientPhysiqueModel->add($data);
+
+        //var_dump($resultat);
+        //die;
+        
+        return view('clientPhysique/result', $insert);
     }
  
     public function ajax_edit($id) {
@@ -60,32 +64,13 @@ class ClientPhysique extends Controller {
         echo json_encode($data);
     }
  
-    public function update() {
- 
-        helper(['form', 'url']);
-        $this->clientPhysiqueModel = new ClientPhysiqueModel();
- 
-        $data = array(
-            'nom' => $this->request->getPost('nom'),
-            'prenom' => $this->request->getPost('prenom'),
-            'email' => $this->request->getPost('email'),
-            'tel' => $this->request->getPost('tel'),
-            'adresse' => $this->request->getPost('adresse'),
-            'identifiant' => $this->request->getPost('identifiant'),
-            'profession' => $this->request->getPost('profession'),
-            'salaire' => $this->request->getPost('salaire'),
-            'info_employeur' => $this->request->getPost('info_employeur'),
-        );
-        $this->clientPhysiqueModel->clientPhysique_update(array('book_id' => $this->request->getPost('id')), $data);
-        return view('ClientPhysique/liste');
-    }
- 
+    
     public function delete($id) {
  
         helper(['form', 'url']);
         $this->clientPhysiqueModel = new clientPhysiqueModel();
         $this->clientPhysiqueModel->delete_by_id($id);
-        return view('ClientPhysique/liste');
+        echo json_encode(array("status" => TRUE));
     }
  
 }

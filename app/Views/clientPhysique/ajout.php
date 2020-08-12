@@ -9,7 +9,7 @@
 					<div class="panel-heading">
 							<h3 class="panel-title" style="text-transform: uppercase;"><i class="fa fa-user-circle"></i>  Formulaire de creation de Client Physique</i></h3>
 							</div>
-                            <div class="panel-body"></div>
+                            
                             
 							<form method="POST" action="<?php echo base_url('ClientPhysique/add');?>" id="formClientPhysique">
 
@@ -26,25 +26,12 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" class="form-control input-sm" name="nom" id="nom" placeholder="Nom" required/>
+											<input type="text" class="form-control input-sm" name="nom" id="nom" placeholder="Nom"/>
 										</div>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" class="form-control input-sm" name="prenom" id="prenom" placeholder="Prenom" required/>
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<input type="text" class="form-control input-sm" name="email" id="email" placeholder="Email" required/>
-										</div>
-									</div>
-									<div class="col-xs-6 col-sm-6 col-md-6">
-										<div class="form-group">
-											<input type="number" class="form-control input-sm" name="tel" id="tel" placeholder="Telephone" required/>
+											<input type="text" class="form-control input-sm" name="prenom" id="prenom" placeholder="Prenom"/>
 										</div>
 									</div>
 								</div>
@@ -52,29 +39,42 @@
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" name="adresse" id="adresse" class="form-control input-sm" placeholder="Adresse" required/>
+											<input type="text" class="form-control input-sm" name="email" id="email" placeholder="Email"/>
 										</div>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="number" name="identifiant" id="identifiant" class="form-control input-sm" placeholder="Numero de la Carte Nationale d'Identité" required/>
+											<input type="number" class="form-control input-sm" name="tel" id="tel" placeholder="Telephone"/>
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-xs-6 col-sm-6 col-md-6">
+										<div class="form-group">
+											<input type="text" name="adresse" id="adresse" class="form-control input-sm" placeholder="Adresse"/>
+										</div>
+									</div>
+									<div class="col-xs-6 col-sm-6 col-md-6">
+										<div class="form-group">
+											<input type="number" name="identifiant" id="identifiant" class="form-control input-sm" placeholder="Numero de la Carte Nationale d'Identité"/>
 										</div>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="text" name="profession" id="profession" class="form-control input-sm flexinput" placeholder="Profession" required/>
+											<input type="text" name="profession" id="profession" class="form-control input-sm flexinput" placeholder="Profession"/>
 										</div>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<input type="number" name="salaire" id="salaire" class="form-control input-sm flexinput" placeholder="Salaire actuel" required/>
+											<input type="number" name="salaire" id="salaire" class="form-control input-sm flexinput" placeholder="Salaire actuel"/>
 										</div>
 									</div>
 									<div class="col-xs-6 col-sm-6 col-md-6">
 										<div class="form-group">
-											<textarea name="info_employeur" id="info_employeur" cols="30" rows="3" class="form-control input-sm flexinput" placeholder="Informations de l'employeur" required></textarea>										</div>
+											<textarea name="info_employeur" id="info_employeur" cols="30" rows="3" class="form-control input-sm flexinput" placeholder="Informations de l'employeur"></textarea>										</div>
 									</div>
 								</div>
 

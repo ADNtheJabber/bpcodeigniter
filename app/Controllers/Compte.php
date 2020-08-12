@@ -73,8 +73,8 @@ class Compte extends Controller {
         }
  
         
-        $insert = $this->CompteModel->add($data);
-        echo json_encode(array("status" => TRUE));
+        $insert['inserts'] = $this->CompteModel->add($data);
+        return view('compte/result', $insert);
     }
  
     public function ajax_edit($id) {

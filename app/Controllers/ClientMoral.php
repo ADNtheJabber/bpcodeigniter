@@ -19,7 +19,7 @@ class ClientMoral extends Controller {
         helper(['form', 'url']);
         $this->clientMoralModel = new ClientMoralModel();
         $data['clients'] = $this->clientMoralModel->get_all();
-        return view('clientPhysique/liste', $data);
+        return view('clientMoral/liste', $data);
     }
 
     public function add() {
@@ -36,8 +36,8 @@ class ClientMoral extends Controller {
             'ninea' => $this->request->getPost('ninea'),
             'regiscom' => $this->request->getPost('registreCommerce'),
         );
-        $insert = $this->clientMoralModel->add($data);
-        return view('ClientMoral/liste');
+        $insert['inserts'] = $this->clientMoralModel->add($data);
+        return view('ClientMoral/result', $insert);
     }
  
     public function ajax_edit($id) {
@@ -81,7 +81,7 @@ class ClientMoral extends Controller {
         helper(['form', 'url']);
         $this->clientMoralModel = new ClientMoralModel();
         $this->clientMoralModel->delete_by_id($id);
-        return view('ClientMoral/liste');
+        echo json_encode(array("status" => TRUE));
     }
  
 }

@@ -21,6 +21,7 @@
       </thead>
 
       <tbody>
+        
             <?php foreach($clients as $client){?>
                 <tr>
                     <td><?php echo $client->id;?></td>
@@ -33,7 +34,8 @@
                         <button class="btn btn-danger" onclick="delete_client(<?php echo $client->id;?>)">Supprimer</button>
                     </td>
                 </tr>
-            <?php }?> 
+            <?php } ?> 
+            
       </tbody>
 
     </table>
@@ -79,6 +81,4 @@
     }
  
   </script>
- 
-  
   <?php include_once '../bpcodeigniter/app/Views/templates/footer.php';?>
