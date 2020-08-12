@@ -11,7 +11,7 @@
 							</div>
                             <div class="panel-body"></div>
                             
-							<form method="POST" action="{$url_base}ClientPhysique/add" id="formClientPhysique">
+							<form method="POST" action="<?php echo base_url('ClientPhysique/add');?>" id="formClientPhysique">
 
 								<div class="row">
 									<div class="col-xs-12 col-sm-12 col-md-12">

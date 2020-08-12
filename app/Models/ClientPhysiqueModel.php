@@ -5,29 +5,36 @@ namespace App\Models;
 use CodeIgniter\Model;
 class ClientPhysiqueModel extends Model {
  
-    var $table = 'clientphysique';
+    var $table = 'clientPhysique';
      
     public function __construct() {
         parent::__construct();
         //$this->load->database();
         $db = \Config\Database::connect();
-        $builder = $db->table('clientphysique');
+        $builder = $db->table('clientPhysique');
     }
  
     public function get_all() {
 //       $query = $this->db->table('compte');
-       $query = $this->db->query('select * from clientphysique');
+       $query = $this->db->query('select * from clientPhysique');
 //      print_r($query->getResult());
        // $query = $this->db->get();
         return $query->getResult();
     }
  
     public function get_by_id($id) {
-      $sql = 'select * from clientphysique where id ='.$id ;
+      $sql = 'select * from clientPhysique where id ='.$id ;
       $query =  $this->db->query($sql);
        
       return $query->getRow();
     }
+
+    public function get_by_cni($identifiant) {
+        $sql = 'select * from clientPhysique where identifiant ='.$identifiant ;
+        $query =  $this->db->query($sql);
+         
+        return $query->getRow();
+      }
  
     public function add($data) {
          

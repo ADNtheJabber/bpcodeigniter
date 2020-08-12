@@ -28,7 +28,7 @@ class ClientMoral extends Controller {
         $this->clientMoralModel = new ClientMoralModel();
  
         $data = array(
-            'nom' => $this->request->getPost('book_isbn'),
+            'nom' => $this->request->getPost('nom'),
             'raisonSociale' => $this->request->getPost('raisonSociale'),
             'email' => $this->request->getPost('email'),
             'tel' => $this->request->getPost('tel'),
@@ -37,7 +37,7 @@ class ClientMoral extends Controller {
             'regiscom' => $this->request->getPost('registreCommerce'),
         );
         $insert = $this->clientMoralModel->add($data);
-        echo json_encode(array("status" => TRUE));
+        return view('ClientMoral/liste');
     }
  
     public function ajax_edit($id) {
@@ -48,6 +48,15 @@ class ClientMoral extends Controller {
  
         echo json_encode($data);
     }
+
+    public function ajax_cni($identifiant) {
+ 
+        $this->clientMoralModel = new ClientMoralModel();
+ 
+        $data = $this->clientMoralModel->get_by_cni($identifiant);
+ 
+        echo json_encode($data);
+    }
  
     public function update() {
  
@@ -55,7 +64,7 @@ class ClientMoral extends Controller {
         $this->clientMoralModel = new ClientMoralModel();
  
         $data = array(
-            'nom' => $this->request->getPost('book_isbn'),
+            'nom' => $this->request->getPost('nom'),
             'raisonSociale' => $this->request->getPost('raisonSociale'),
             'email' => $this->request->getPost('email'),
             'tel' => $this->request->getPost('tel'),
@@ -64,7 +73,7 @@ class ClientMoral extends Controller {
             'registreCommerce' => $this->request->getPost('registreCommerce'),
         );
         $this->clientMoralModel->clientMoral_update(array('id' => $this->request->getPost('id')), $data);
-        echo json_encode(array("status" => TRUE));
+        return view('ClientMoral/liste');
     }
  
     public function delete($id) {
@@ -72,7 +81,7 @@ class ClientMoral extends Controller {
         helper(['form', 'url']);
         $this->clientMoralModel = new ClientMoralModel();
         $this->clientMoralModel->delete_by_id($id);
-        echo json_encode(array("status" => TRUE));
+        return view('ClientMoral/liste');
     }
  
 }

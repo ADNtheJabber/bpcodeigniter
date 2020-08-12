@@ -11,7 +11,7 @@
 							</div>
                             <div class="panel-body"></div>
                             
-							<form method="POST" action="{$url_base}ClientMoral/add" id="formClientMoral">
+							<form method="POST" action="<?php echo base_url('ClientMoral/add');?>" id="formClientMoral">
 			
 								<div class="row">
 									<div class="col-xs-6 col-sm-6 col-md-6">

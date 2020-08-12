@@ -5,7 +5,7 @@ namespace App\Controllers;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
-use App\Models\clientPhysiqueModel;
+use App\Models\ClientPhysiqueModel;
 class ClientPhysique extends Controller {
  
  
@@ -36,10 +36,10 @@ class ClientPhysique extends Controller {
             'identifiant' => $this->request->getPost('identifiant'),
             'profession' => $this->request->getPost('profession'),
             'salaire' => $this->request->getPost('salaire'),
-            'info_employeur' => $this->request->getPost('info_employeur'),
+            'infosEmp' => $this->request->getPost('info_employeur'),
         );
         $insert = $this->clientPhysiqueModel->add($data);
-        echo json_encode(array("status" => TRUE));
+        return view('clientPhysique/ajout', $insert);
     }
  
     public function ajax_edit($id) {
@@ -47,6 +47,15 @@ class ClientPhysique extends Controller {
         $this->clientPhysiqueModel = new ClientPhysiqueModel();
  
         $data = $this->clientPhysiqueModel->get_by_id($id);
+ 
+        echo json_encode($data);
+    }
+
+    public function ajax_cni($identifiant) {
+ 
+        $this->clientPhysiqueModel = new ClientPhysiqueModel();
+ 
+        $data = $this->clientPhysiqueModel->get_by_cni($identifiant);
  
         echo json_encode($data);
     }
@@ -68,7 +77,7 @@ class ClientPhysique extends Controller {
             'info_employeur' => $this->request->getPost('info_employeur'),
         );
         $this->clientPhysiqueModel->clientPhysique_update(array('book_id' => $this->request->getPost('id')), $data);
-        echo json_encode(array("status" => TRUE));
+        return view('ClientPhysique/liste');
     }
  
     public function delete($id) {
@@ -76,7 +85,7 @@ class ClientPhysique extends Controller {
         helper(['form', 'url']);
         $this->clientPhysiqueModel = new clientPhysiqueModel();
         $this->clientPhysiqueModel->delete_by_id($id);
-        echo json_encode(array("status" => TRUE));
+        return view('ClientPhysique/liste');
     }
  
 }
